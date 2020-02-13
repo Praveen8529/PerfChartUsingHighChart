@@ -1,0 +1,379 @@
+
+.tileWithButtonTabs {
+	@extend .button-toggle_Tabs;
+	.chart {
+	  @extend .chart_fundSeries;
+		.highcharts-column-series .highcharts-point {
+			stroke: #FFFFFF;
+			stroke-width: 2px;
+		}
+
+		.highcharts-legend-item {
+			pointer-events: none;
+		}
+
+	}
+	.tile--note {
+		display: none;
+	}
+}
+.tileWithButtonTabs-PerformanceRecord {
+	$colors: #d8dafc #7b7ec2 #4d508f #3e4190 !default;
+
+	/* Series bar color options */
+	@for $i from 1 through length($colors) {
+		$color: nth($colors, $i);
+		.highcharts-color-#{$i - 1} {
+			fill: $color;
+			stroke: $color;
+		}
+	}
+	.tile .tabs {
+		border-bottom: none;
+		margin-top: 20px;
+		margin-bottom: 2px;
+		.tabs__item {
+			font-weight: normal;
+		}
+		.tabs__item--active {
+			font-weight: 600;
+		}
+	}
+	.text-primary {
+		color: white;
+	}
+
+	.relativeNavigation {
+		position: relative;
+		width: 700px;
+		height: 50px;
+	}
+	.absoluteNavigation {
+		position: absolute;
+		top: -700px;
+		height: 100px;
+		width: 700px;
+	}
+	@extend .button-toggle_Tabs;
+
+	.chart {
+		@extend .chart_fundSeries;
+		.zone-fundRaising {
+			stroke: #d3d4d5;
+			fill: white;
+			stroke-dasharray: 10, 10;
+			stroke-width: 1px;
+		}
+		.zone-minMax {
+			fill: #afb1cc;
+		}
+		.highcharts-legend-item text {
+			cursor: auto;
+			fill: #282826 !important;
+		}
+		.highcharts-scrolling {
+			overflow-x: auto;
+		}
+		.highcharts-axis-labels {
+			margin-top: 12px;
+		}
+		.highcharts-axis-line {
+			stroke: none;
+		}
+		a {
+			color: #282826;
+			text-decoration: underline;
+		}
+		.highcharts-tracker {
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+	}
+	.xAxisLabel-formatter {
+		display: block;
+		padding: 10px 0;
+		text-align: center;
+
+		&.link_blue a {
+			color: #0050d8 !important;
+		}
+	}
+	.plottingMarker_fundSeries {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		cursor: default;
+		left: 6px;
+		top: -17px;
+		z-index: 1;
+		.marker {
+			width: 0.05em;
+			height: 89px;
+			position: relative;
+			transform: rotate(90deg);
+			background: #6cbd70;
+			top: -29px;
+
+			&__oval {
+				position: relative;
+				left: -2px;
+				width: 5px;
+				height: 5px;
+				-webkit-border-radius: 25px;
+				-moz-border-radius: 25px;
+				border-radius: 25px;
+				background: #6cbd70;
+			}
+
+			&__label {
+				position: absolute;
+				top: -49px;
+				border-radius: 5px;
+				min-width: 70px;
+				left: -35px;
+				display: flex;
+				justify-content: left;
+				align-items: center;
+				background: #6cbd70;
+				font-size: 10px;
+				color: #fff;
+				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.17);
+				z-index: 1;
+				padding: 5px 5px 5px 5px;
+				transform: rotate(-90deg);
+			}
+			.preqinMarket {
+				min-width: 41px;
+				top: -35px;
+				left: -20px;
+			}
+			.icon {
+				margin-left: 0.2em;
+			}
+		}
+	}
+	.benchMark-info {
+		height: 120px;
+		top: 5px;
+		width: 150px;
+		background-color: #ededed;
+		position: absolute;
+		display: flex;
+		cursor: default;
+		left: -70px;
+		padding: 12px;
+		box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
+		white-space: pre-wrap !important;
+		p {
+			height: 85px;
+			color: #282826;
+			font-size: 9px;
+			line-height: 15px;
+			text-align: center;
+		}
+	}
+
+	.text-Primary-bellInfo {
+		font-weight: normal;
+		color: white;
+		font-family: Open Sans;
+		font-style: normal;
+		font-size: 10px;
+	}
+	.NotificationModalWithBell {
+		@extend .text-Primary-bellInfo;
+		position: absolute;
+		display: none;
+		padding: 15px;
+		background: #6CBD70;
+		border-radius: 6px;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+		min-height: 40px;
+		width: 255px;
+		top: -52px;
+		left: 52px;
+		z-index: 5;
+		p {
+			white-space: pre-wrap;
+		}
+		&__button {
+			@extend .text-Primary-bellInfo;
+			cursor: pointer;
+			background: none;
+			border: none;
+			text-decoration: underline;
+			margin-top: 15px;
+		}
+	}
+}
+
+.button-toggle_Tabs {
+	.tileWrapper {
+		margin-top: 0;
+	}
+
+	.button-toggle-container {
+		padding-top: 0;
+	}
+
+	.buttonTabs {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.layoutSwitch {
+		margin: 0 20px;
+
+		.items {
+			min-width: 120px;
+
+			span {
+				margin: 0 auto;
+			}
+
+			&:not(.active) {
+				background-color: white;
+			}
+
+			&:first-of-type {
+				border-radius: 0;
+			}
+			&:last-of-type {
+				border-radius: 0;
+			}
+		}
+	}
+}
+
+.chart_fundSeries {
+	box-shadow: none;
+	margin-bottom: 0;
+	padding: 0;
+
+	.highcharts-title {
+		font-size: 18px;
+		font-weight: 600;
+	}
+
+	.highcharts-tick {
+		stroke: none;
+	}
+
+	.highcharts-anchor {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.highcharts-axis-title {
+		font-size: 14px;
+	}
+
+	.highcharts-menu {
+		padding: 15px;
+
+		.highcharts-menu-item {
+			line-height: 30px;
+		}
+	}
+	.tooltip-line-1,
+	.tooltip-line-2 {
+		font-size: 12px;
+	}
+	.highcharts-tooltip > span {
+		padding: 10px 0;
+	}
+
+	.highcharts-axis-labels {
+		text-align: center;
+
+		.custom-xLabels {
+			padding: 0 5px;
+			white-space: normal;
+		}
+
+		a {
+			font-size: 12px;
+			color: #282826;
+			text-decoration: underline;
+		}
+	}
+}
+
+.tile--note {
+	display: none;
+}
+
+.fundSeriesBenchmarkTable {
+	.tileWrapper {
+		margin: 0;
+		box-shadow: none;
+	}
+	.tile {
+		padding-right: 0 !important;
+		padding-left: 0 !important;
+	}
+	.sortHeaderCell__sortToggle {
+		left: 0;
+	}
+	.messageBoxContainer {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		left: 50%;
+		height: 350px;
+	}
+	.messageBox {
+		display: flex;
+		align-items: center;
+		width: 200px;
+		height: 132px;
+		background: #ededed;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+		z-index: 2;
+		font-family: Open Sans;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 9px;
+		text-align: center;
+		color: #282826;
+		padding: 16px;
+	}
+}
+
+.highcharts-legend-item.no-data-columns {
+	display: none;
+}
+
+.no-data-columns .highcharts-point {
+	stroke: #d3d4d5 !important;
+	stroke-dasharray: 10, 10;
+	stroke-width: 1px !important;
+	fill: none;
+}
+
+.selectField {
+	margin-right: 7px;
+	position: relative;
+	select {
+		box-sizing: border-box;
+		padding-left: 5px;
+		color: #7b7d80;
+		height: 32px;
+		width: 217px;
+		border: 1px solid #7b7d80;
+		border-radius: 5px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background-image: url('../svgs/arrowDown.svg');
+		background-repeat: no-repeat;
+		background-position: calc(100% - 1.3em) center;
+		pointer-events: auto;
+	}
+}
+
+.profileTabsContainer__grid__header {
+	z-index: 3;
+}
